@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace RaceX
 {
-    public class AutoHibrido : Auto
+    public class AutoDeportivo : Auto
     {
-        public AutoHibrido(string nombre) : base(nombre)
+        public AutoDeportivo(string nombre) : base(nombre)
         {
-            Tipo = "Híbrido";
+            Tipo = "Deportivo";
         }
 
         public override int CalcularBonificacion(string clima)
         {
-            return clima == "Ventoso" ? -1 : 0;
+            return clima == "Soleado" ? 3 : 0;
         }
     }
 }
