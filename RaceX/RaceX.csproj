@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Auto.cs" />
     <Compile Include="AutoDeportivo.cs" />
+    <Compile Include="AutoFactory.cs" />
     <Compile Include="AutoHibrido.cs" />
     <Compile Include="AutoTodoTerreno.cs" />
     <Compile Include="Carrera.cs" />
