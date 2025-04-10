@@ -1,32 +1,18 @@
 ﻿using System;
-
 using System.Collections.Generic;
-
 using System.Linq;
-
 using System.Text;
-
 using System.Threading.Tasks;
 
 
-
 namespace RaceX
-
 {
-
     public class Carrera
-
     {
-
         private List<Auto> autos;
-
         private string clima;
-
         private bool enCurso;
-
         private Random random;
-
-
 
         public int Meta { get; private set; } = 150;
 
@@ -36,48 +22,26 @@ namespace RaceX
 
         public IReadOnlyList<Auto> Autos => autos.AsReadOnly();
 
-
-
         public Carrera()
-
         {
-
             autos = new List<Auto>();
-
             random = new Random();
-
             enCurso = false;
-
         }
 
-
-
         public bool AgregarAuto(Auto auto)
-
         {
-
             if (enCurso)
-
                 throw new InvalidOperationException("No se pueden agregar autos una vez iniciada la carrera.");
 
-
-
             if (string.IsNullOrWhiteSpace(auto.Nombre))
-
                 throw new ArgumentException("El nombre del auto no puede estar vacío.");
 
-
-
             if (autos.Any(a => a.Nombre.Equals(auto.Nombre, StringComparison.OrdinalIgnoreCase)))
-
                 throw new ArgumentException("El nombre del auto ya está registrado.");
 
-
-
             autos.Add(auto);
-
             return true;
-
         }
 
 
