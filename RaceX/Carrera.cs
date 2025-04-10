@@ -44,108 +44,56 @@ namespace RaceX
             return true;
         }
 
-
-
         public void SeleccionarClima(string climaSeleccionado)
-
         {
-
             if (string.IsNullOrEmpty(climaSeleccionado))
-
                 throw new ArgumentException("Debe seleccionar un clima válido.");
 
-
-
             clima = climaSeleccionado;
-
         }
-
-
 
         public void IniciarCarrera()
-
         {
-
             if (autos.Count < 3)
-
                 throw new InvalidOperationException("Se requieren al menos 3 autos para iniciar la carrera.");
 
-
-
             if (string.IsNullOrEmpty(clima))
-
                 throw new InvalidOperationException("Debe seleccionarse un clima antes de iniciar.");
 
-
-
             enCurso = true;
-
         }
 
-
-
         public string EjecutarTurno()
-
         {
-
             if (!enCurso)
-
                 throw new InvalidOperationException("La carrera no ha sido iniciada.");
 
-
-
             foreach (var auto in autos)
-
             {
-
                 auto.Avanzar(clima);
-
             }
-
-
-
-            // Aplicar obstáculo aleatorio con 30% de probabilidad
 
             if (random.NextDouble() <= 0.3)
-
             {
-
                 int index = random.Next(autos.Count);
-
                 autos[index].Penalizar();
-
                 return $"¡Obstáculo para {autos[index].Nombre}! Pierde 5 metros.";
-
             }
-
-
-
             return "Turno ejecutado sin obstáculos.";
-
         }
 
 
 
         public Auto ObtenerGanador()
-
         {
-
             return autos.FirstOrDefault(a => a.DistanciaRecorrida >= Meta);
-
         }
 
-
-
         public void Reiniciar()
-
         {
-
             autos.Clear();
-
             clima = null;
-
             enCurso = false;
-
         }
 
     }
